@@ -438,10 +438,4 @@ CapstoneSlot15/
 
 ## 👨‍💻 Author
 
-**Capstone Project - Node.js 53**
-
----
-
-## 📄 License
-
-MIT
+**mdtrong1305**
