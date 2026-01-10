@@ -405,24 +405,6 @@ CapstoneSlot15/
 
 ---
 
-```bash
-# Development mode (with nodemon)
-npm run dev
-
-# Production mode
-npm start
-
-# Prisma commands
-npm run prisma:generate    # Generate Prisma Client
-npm run prisma:migrate     # Run migrations
-npm run prisma:studio      # Open Prisma Studio
-
-# Format code
-npm run format
-```
-
----
-
 ## 🐛 Troubleshooting
 
 ### Lỗi kết nối Database
