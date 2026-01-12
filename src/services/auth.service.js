@@ -30,7 +30,7 @@ export const authService = {
   },
 
   async register(req) {
-    const { email, password, fullname } = req.body;
+    const { email, password, fullname, age } = req.body;
 
     // kiểm tra người dùng có hay chưa, nếu đã tồn tại thì không cho đăng ký
     const userExist = await prisma.users.findUnique({
@@ -53,10 +53,9 @@ export const authService = {
         email: email,
         password: hashPassword,
         fullname: fullname,
+        age: age,
       },
     });
-
-    //  console.log({ email, password });
 
     return true;
   },
