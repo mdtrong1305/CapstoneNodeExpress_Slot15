@@ -130,6 +130,6 @@ authRouter.post('/register', authController.register);
  *             schema:
  *               $ref: '#/components/schemas/UnauthorizedError'
  */
-authRouter.post('/refresh-token', protect, authController.refreshToken);
+authRouter.post('/refresh-token', authController.refreshToken);
 
 export default authRouter;

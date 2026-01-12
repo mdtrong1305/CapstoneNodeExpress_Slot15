@@ -85,7 +85,7 @@ export const authService = {
 
     // trả 2 token
     // refreshToken sẽ được làm mới thì nếu người dùng ko truy cập trong 1 ngày thì bị đăng xuất, nếu truy cập thì refreshToken lại được làm mới
-    const tokens = tokenService.createTokens(userExits.id);
+    const tokens = tokenService.createTokens(userExits.userID);
 
     return tokens;
   },
