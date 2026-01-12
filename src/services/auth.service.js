@@ -59,4 +59,34 @@ export const authService = {
 
     return true;
   },
+
+  async refreshToken(req) {
+    const { accessToken, refreshToken } = req.body;
+
+    // accessToken: đang bị hết hạn
+    // verify accessToken phải loại trừ hết hạn
+    const decodeAccessToken = tokenService.verifyAccessToken(accessToken, {
+      ignoreExpiration: true,
+    });
+    const decodeRefreshToken = tokenService.verifyRefreshToken(refreshToken);
+
+    if (decodeAccessToken.userID !== decodeRefreshToken.userID) {
+      throw new UnauthorizedException("Refresh Token Invalid");
+    }
+
+    const userExits = await prisma.users.findUnique({
+      where: {
+        userID: decodeRefreshToken.userID,
+      },
+    });
+    if (!userExits) {
+      throw new UnauthorizedException("Không có người dùng");
+    }
+
+    // trả 2 token
+    // refreshToken sẽ được làm mới thì nếu người dùng ko truy cập trong 1 ngày thì bị đăng xuất, nếu truy cập thì refreshToken lại được làm mới
+    const tokens = tokenService.createTokens(userExits.id);
+
+    return tokens;
+  },
 };

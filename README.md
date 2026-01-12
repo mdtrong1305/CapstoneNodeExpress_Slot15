@@ -142,6 +142,7 @@ Truy cập Swagger UI tại: `http://localhost:your_port/api-docs`
 |--------|----------|-------------|---------------|
 | POST | `/api/auth/register` | Đăng ký tài khoản mới | ❌ |
 | POST | `/api/auth/login` | Đăng nhập | ❌ |
+| POST | `/api/auth/refresh-token` | Làm mới access token | ✅ |
 
 ### 👤 Users
 
@@ -210,6 +211,24 @@ Content-Type: application/json
       "email": "user@example.com",
       "fullname": "Nguyễn Văn A"
     }
+  }
+}
+```
+
+#### 3. Làm mới access token
+```http
+POST /api/auth/refresh-token
+Authorization: Bearer <refresh_token>
+```
+
+**Response:**
+```json
+{
+  "statusCode": 200,
+  "message": "Refresh token successfully",
+  "data": {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
   }
 }
 ```

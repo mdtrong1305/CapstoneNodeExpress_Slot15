@@ -186,6 +186,29 @@ const swaggerDefinition = {
           user: { $ref: "#/components/schemas/User" },
         },
       },
+      RefreshTokenRequest: {
+        type: "object",
+        required: ["accessToken", "refreshToken"],
+        properties: {
+          accessToken: { 
+            type: "string", 
+            example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+            description: "Access token đã hết hạn"
+          },
+          refreshToken: { 
+            type: "string", 
+            example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+            description: "Refresh token còn hiệu lực"
+          },
+        },
+      },
+      RefreshTokenResponse: {
+        type: "object",
+        properties: {
+          accessToken: { type: "string", example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...", description: "Access token mới" },
+          refreshToken: { type: "string", example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...", description: "Refresh token (có thể mới hoặc giữ nguyên)" },
+        },
+      },
       
       // ============= RESPONSE SCHEMAS =============
       SuccessResponse: {

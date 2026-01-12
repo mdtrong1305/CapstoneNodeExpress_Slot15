@@ -14,4 +14,10 @@ export const authController = {
     const response = responseSuccess(result, `Register user successfully`);
     res.status(response.statusCode).json(response);
   },
+
+  async refreshToken(req, res, next) {
+    const result = await authService.refreshToken(req);
+    const response = responseSuccess(result, `Refresh token successfully`);
+    res.status(response.statusCode).json(response);
+  },
 };
